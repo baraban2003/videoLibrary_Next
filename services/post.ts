@@ -1,4 +1,4 @@
-import { API_URL } from ".";
+import { API_URL } from '.';
 
 export interface Post {
   userId: number;
@@ -7,12 +7,17 @@ export interface Post {
   body: string;
 }
 
-export async function getAllPosts(): Promise<Post[]> {
-  const response = await fetch(`${API_URL}/posts`);
-  return await response.json();
+export async function getAllPosts() {
+  const response = await fetch(`${API_URL}/posts`, {
+    next: { revalidate: 60 },
+  });
+
+  return response.json();
 }
 
-export async function getOnePost(id: number): Promise<Post[]> {
-  const response = await fetch(`${API_URL}/posts/${id}`);
-  return await response.json();
+export async function getOnePost(id: string) {
+  const response = await fetch(`${API_URL}/posts/${id}`, {
+    next: { revalidate: 60 },
+  });
+  return response.json();
 }

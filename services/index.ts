@@ -1,2 +1,1 @@
-export const API_URL =
-  "https://my-json-server.typicode.com/typicode/demo/posts";
+export const API_URL = 'https://jsonplaceholder.typicode.com';
